@@ -7,13 +7,16 @@ import (
 	"github.com/h8gi/blgo/models"
 	"github.com/h8gi/blgo/views"
 	"github.com/jinzhu/gorm"
+	_ "github.com/jinzhu/gorm/dialects/postgres"
 	_ "github.com/jinzhu/gorm/dialects/sqlite"
 	"github.com/labstack/echo"
 	"github.com/labstack/echo/middleware"
 )
 
 func main() {
-	db, err := gorm.Open("sqlite3", "test.db")
+	// db, err := gorm.Open("sqlite3", "test.db")
+	db, err := gorm.Open("postgres",
+		"host=localhost user=yagihiroki dbname=gomi sslmode=disable password=mypassword")
 	if err != nil {
 		panic(err)
 	}

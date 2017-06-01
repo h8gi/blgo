@@ -28,8 +28,10 @@ var editor = new MyVue({
     contents: ''
   },
   methods: {
-    post: function(contents) {
-      axios.post('/api/fragments', { text: this.contents})
+    post: function() {
+      payload = new FormData()
+      payload.append('contents', this.contents)
+      axios.post('/api/fragments', payload)
         .then(function(response){
           fragmentsList.update()
         })

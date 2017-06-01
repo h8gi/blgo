@@ -7,14 +7,14 @@
 	<section id="fragments-list">
 	  <ul>
         <li v-for="fragment in fragments">
-          (( fragment.text ))
+          (( fragment.contents ))
         </li>
       </ul>
 	</section>
 
     <section id="editor">
       <textarea v-model="contents" placeholder="edit me"></textarea>
-      <button @click="post(contents)">post</button>
+      <button @click="post">post</button>
     </section>
     
     <script src="/static/js/app.js"></script>

@@ -15,9 +15,12 @@ func GetFragmentsList(c echo.Context) error {
 
 // TODO: Check form value. Don't use `c.bind`.
 func PostFragment(c echo.Context) error {
-	text := c.FormValue("text")
+	contents := c.FormValue("contents")
+	if contents == "" {
+		return echo.NewHTTPError(http.StatusBadRequest, "empty contents")
+	}
 	f := &models.Fragment{
-		Text: text,
+		Contents: contents,
 	}
 	if err := DB.Create(f).Error; err != nil {
 		return err
@@ -36,12 +39,12 @@ func GetFragment(c echo.Context) error {
 
 func UpdateFragment(c echo.Context) error {
 	id := c.Param("id")
-	text := c.Param("text")
+	contents := c.FormValue("contents")
 	f := new(models.Fragment)
 	if DB.First(f, "id = ?", id).RecordNotFound() {
 		return echo.NewHTTPError(http.StatusNotFound)
 	}
-	if err := DB.Model(f).Update("text", text).Error; err != nil {
+	if err := DB.Model(f).Update("contents", contents).Error; err != nil {
 		return err
 	}
 	return c.JSON(http.StatusOK, f)
