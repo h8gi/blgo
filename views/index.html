@@ -5,8 +5,16 @@
   <body>
     <h1>hello</h1>
 	<section id="fragments-list">
-	  
+	  <ul>
+        <li v-for="fragment in fragments">
+          (( fragment.text ))
+        </li>
+      </ul>
 	</section>
+
+    <section id="post">
+      
+    </section>
     <script src="/static/js/app.js"></script>
   </body>
 </html>
