@@ -22,3 +22,20 @@ var fragmentsList = new MyVue({
 
 fragmentsList.update()
 
+var editor = new MyVue({
+  el: '#editor',
+  data: {
+    contents: ''
+  },
+  methods: {
+    post: function(contents) {
+      axios.post('/api/fragments', { text: this.contents})
+        .then(function(response){
+          fragmentsList.update()
+        })
+        .catch(function(error){
+          console.log(error)
+        })
+    }
+  }
+})

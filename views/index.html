@@ -12,9 +12,11 @@
       </ul>
 	</section>
 
-    <section id="post">
-      
+    <section id="editor">
+      <textarea v-model="contents" placeholder="edit me"></textarea>
+      <button @click="post(contents)">post</button>
     </section>
+    
     <script src="/static/js/app.js"></script>
   </body>
 </html>
