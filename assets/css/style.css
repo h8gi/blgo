@@ -1,5 +1,17 @@
 body {
-  width: 960px;
+  max-width: 960px;
   margin: 0 auto;
   padding: 0 50px;
+}
+
+#editor {
+  border: 2px solid #777;
+}
+#editor input {
+  width: 100%;
+}
+#editor textarea {
+  width: 100%;
+  border-top: 1px solid #333;
+  border-bottom: 1px solid #333;
 }

@@ -1,0 +1,17 @@
+{{define "fragment"}}
+<!doctype html>
+<html lang="en">
+  {{template "head" .}}
+  <body>
+    <h1>{{.Name}}</h1>
+
+	<section id="editor">
+	  <input v-model.trim="name" type="text" placeholder="name" />
+      <textarea v-model="contents" placeholder="edit me">{{.Contents}}</textarea>
+      <button @click="post">post</button>
+    </section>
+    
+    <script src="/static/js/app.js"></script>
+  </body>
+</html>
+{{end}}

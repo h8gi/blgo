@@ -4,5 +4,6 @@ import "github.com/jinzhu/gorm"
 
 type Fragment struct {
 	gorm.Model
-	Contents string `json:"contents" form:"contents"`
+	Name     string `json:"name" form:"name" gorm:"not null;unique"`
+	Contents string `json:"contents" form:"contents" gorm:"not null"`
 }

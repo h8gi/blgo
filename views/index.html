@@ -7,12 +7,15 @@
 	<section id="fragments-list">
 	  <ul>
         <li v-for="fragment in fragments">
-          (( fragment.contents ))
+		  <a v-bind:href="'/fragments/' + fragment.name"><h3>(( fragment.name ))</h3></a>
+          <p>(( fragment.contents ))</p>
+		  <button @click="deleteFragment(fragment.name)">DELETE</button>
         </li>
       </ul>
 	</section>
 
-    <section id="editor">
+	<section id="editor">
+	  <input v-model.trim="name" type="text" placeholder="name" />
       <textarea v-model="contents" placeholder="edit me"></textarea>
       <button @click="post">post</button>
     </section>
